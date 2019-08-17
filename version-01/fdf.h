@@ -30,5 +30,7 @@ typedef struct s_map{
 t_map			*map_initialize(const char *file);
 void            print_error(char *message);
 int             read_map(const char *file, t_map *map);
+void			read_result(int result);
+void			free_coordinates(char ***coordinates);
 
 #endif
