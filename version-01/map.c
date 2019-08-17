@@ -4,14 +4,6 @@
 #include <errno.h>
 #include <fcntl.h>
 
-
-
-void		print_error(char *message)
-{
-		ft_putendl_fd(message, 2);
-	    exit(1);
-}
-
 static size_t size_map(const char *file, t_map *map){
     int width = 0;
     int height = 0;
@@ -20,7 +12,7 @@ static size_t size_map(const char *file, t_map *map){
 
     fd = open(file, O_RDONLY);
 
-    //TODO - Вместо ft_strlen(str) релизовать фунсцию подсчета слов  <int count_word(char *str, char symbol)>
+    //TODO - Вместо ft_strlen(str) реализовать функцию подсчета слов  <int count_word(char *str, char symbol)>
     while(get_next_line(fd, &str))
     {
         if(height == 0)
