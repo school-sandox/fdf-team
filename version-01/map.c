@@ -4,6 +4,25 @@
 #include <errno.h>
 #include <fcntl.h>
 
+static int        width_parser(char *str)
+{
+    int nbrs;
+    
+    nbrs = 0;
+    while (*str)
+    {
+        if (ft_isdigit(*str))
+            nbrs++;
+        while (ft_isdigit(*str))
+            str++;
+        if (*str == ',')
+            while (*(++str) != ' ' && *str);
+        while (!(ft_isdigit(*str)) && *str)
+            str++;
+    }
+    return (nbrs);
+}
+
 static size_t size_map(const char *file, t_map *map){
     int width = 0;
     int height = 0;
@@ -12,14 +31,13 @@ static size_t size_map(const char *file, t_map *map){
 
     fd = open(file, O_RDONLY);
 
-    //TODO - Вместо ft_strlen(str) реализовать функцию подсчета слов  <int count_word(char *str, char symbol)>
     while(get_next_line(fd, &str))
     {
         if(height == 0)
         {
-            map->width = ft_strlen(str);
+            map->width = width_parser(str);
         }
-        else if (ft_strlen(str) != map->width){
+        else if (width_parser(str) != map->width){
             print_error(ERR_MAP_INITIALIZE);
         }
         height++;
