@@ -7,6 +7,7 @@
 # define ERR_MALLOC_MAP_INITIALIZE "Malloc map_initialize Error."
 # define ERR_MAP_INITIALIZE "Invalid Map. Check your map."
 # define ERR_READ_MAP "Reading fail"
+# define ERR_HEX "Hex error"
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
