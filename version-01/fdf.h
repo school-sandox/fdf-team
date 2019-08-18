@@ -12,28 +12,30 @@
 # include <stdio.h>
 # include <libft.h>
 
-typedef struct s_point{
+typedef struct			s_point{
 	int		x;
 	int		y;
 	int		z;
-	char	*colour; //не чар
-} t_point;
+	int		colour;
+}						t_point;
 
-typedef struct s_map{
+typedef struct			s_map{
 	void* mlx_ptr;
 	void* win_ptr;
-    int width;
-    int height;
-    int size;
-    int z_max;
-    int z_min;
+	int width;
+	int height;
+	int size;
+	int z_max;
+	int z_min;
 	t_point *points;
-} t_map;
+}						t_map;
 
-t_map			*map_initialize(const char *file);
-void			print_error(char *message);
-int				read_map(const char *file, t_map *map);
-void			read_result(int result);
-void			free_coordinates(char ***coordinates);
+t_map					*map_initialize(const char *file);
+void					print_error(char *message);
+int						read_map(const char *file, t_map *map);
+void					read_result(int result);
+void					free_coordinates(char ***coordinates);
+int						ft_atoi_hex(const char *str);
+
 
 #endif

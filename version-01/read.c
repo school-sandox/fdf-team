@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/18 18:10:40 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/18 20:16:20 by ycorrupt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 static int			ft_charinstr(const char *str, char c)
@@ -9,6 +21,20 @@ static int			ft_charinstr(const char *str, char c)
 		if (str[i] == c)
 			return (1);
 	return (0);
+}
+
+static int			ns_checker(const char *str, int base)
+{
+	const char *arr = "0123456789aABbcCDdeEfF";
+
+	while (*str)
+	{
+		if (base == 10 && !(ft_isdigit(*str)))
+			return (0);
+		if (base == 16 && !(ft_charinstr(arr, *str)))
+			return (0);
+	}
+	return (1);
 }
 
 void				points_filler(const char *str, t_map *map)
@@ -28,13 +54,15 @@ void				points_filler(const char *str, t_map *map)
 		if (ft_charinstr((const char *)coordinates[j], ','))
 		{
 			zandcolour = ft_strsplit(coordinates[j], ',');
-			map->points[i].z = ft_atoi(zandcolour[0]);
-			map->points[i].colour = zandcolour[1]; //атойбэйс
+			if (!(map->points[i].z = ft_atoi(zandcolour[0])))
+				print_error(ERR_READ_MAP);
+			if (!(map->points[i].colour = ft_atoi_hex(zandcolour[1])))
+				print_error(ERR_READ_MAP);
 		}
 		else
 		{
 			map->points[i].z = ft_atoi(coordinates[j]);
-			map->points[i].colour = NULL; //тест
+			map->points[i].colour = 0; //тест
 		}
 		//free_coordinates(&zandcolour);
 		j++;
@@ -58,7 +86,7 @@ int             read_map(const char *file, t_map *map)
         ft_strdel(&str);
     }
 	for (int i = 0; i < map->size; i++)
-			printf("x:%d y:%d z:%d colour:%s\n", map->points[i].x, map->points[i].y, map->points[i].z, map->points[i].colour);
+			printf("x:%d y:%d z:%d colour:%d\n", map->points[i].x, map->points[i].y, map->points[i].z, map->points[i].colour);
     close(fd);
     read_result(result);
     return result;
