@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 18:10:40 by ycorrupt          #+#    #+#             */
-/*   Updated: 2019/08/18 18:59:37 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2019/08/18 20:16:20 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ static int			ns_checker(const char *str, int base)
 	while (*str)
 	{
 		if (base == 10 && !(ft_isdigit(*str)))
-			return (-1);
+			return (0);
 		if (base == 16 && !(ft_charinstr(arr, *str)))
-			return (-1);
+			return (0);
 	}
+	return (1);
 }
 
 void				points_filler(const char *str, t_map *map)
@@ -53,8 +54,10 @@ void				points_filler(const char *str, t_map *map)
 		if (ft_charinstr((const char *)coordinates[j], ','))
 		{
 			zandcolour = ft_strsplit(coordinates[j], ',');
-			map->points[i].z = ft_atoi(zandcolour[0]);
-			map->points[i].colour = ft_atoi_hex(zandcolour[1]);
+			if (!(map->points[i].z = ft_atoi(zandcolour[0])))
+				print_error(ERR_READ_MAP);
+			if (!(map->points[i].colour = ft_atoi_hex(zandcolour[1])))
+				print_error(ERR_READ_MAP);
 		}
 		else
 		{
