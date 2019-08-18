@@ -6,8 +6,8 @@
 
 static int        width_parser(char *str)
 {
-    int nbrs;
-    
+    int	nbrs;
+
     nbrs = 0;
     while (*str)
     {
