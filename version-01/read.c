@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 18:10:40 by ycorrupt          #+#    #+#             */
-/*   Updated: 2019/08/18 18:18:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2019/08/18 18:59:37 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ static int			ft_charinstr(const char *str, char c)
 		if (str[i] == c)
 			return (1);
 	return (0);
+}
+
+static int			ns_checker(const char *str, int base)
+{
+	const char *arr = "0123456789aABbcCDdeEfF";
+
+	while (*str)
+	{
+		if (base == 10 && !(ft_isdigit(*str)))
+			return (-1);
+		if (base == 16 && !(ft_charinstr(arr, *str)))
+			return (-1);
+	}
 }
 
 void				points_filler(const char *str, t_map *map)
