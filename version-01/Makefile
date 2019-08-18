@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmacgyve <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/17 16:49:15 by jmacgyve          #+#    #+#              #
-#    Updated: 2019/08/17 16:49:17 by jmacgyve         ###   ########.fr        #
+#    Updated: 2019/08/18 13:21:43 by ycorrupt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INC = libft/includes
 LIBRARY = libft
 
 $(NAME): $(SRC)
-	gcc -o $(NAME) $(SRC) -I $(INC) -L ./$(LIBRARY) -lft  -lmlx -framework OpenGL -framework Appkit 
+	gcc -o $(NAME) $(SRC) -I $(INC) -L ./$(LIBRARY) -lft  -lmlx -framework OpenGL -framework Appkit -g
 	make -C $(LIBRARY) 
 
 all:$(NAME)
@@ -34,4 +34,4 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-	gcc -c  $(SRC) -I $(INC)
+	gcc -c  $(SRC) -I $(INC) -g
