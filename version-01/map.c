@@ -1,8 +1,16 @@
-#include <stdio.h>
-#include <libft.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/18 18:12:59 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/18 18:18:19 by ycorrupt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
-#include <errno.h>
-#include <fcntl.h>
 
 static int        width_parser(char *str)
 {
@@ -46,9 +54,6 @@ static size_t size_map(const char *file, t_map *map){
     map->height = height;
     close(fd);
     map->size = map->height * map->width;
-    //printf("width %d\n", map->width);
-    //printf("height %d\n", map->height);
-    //printf("size %d\n", map->size);
     return (sizeof(t_point) * map->size);;
 }
 
