@@ -33,6 +33,7 @@ static int			ns_checker(const char *str, int base)
 			return (0);
 		if (base == 16 && !(ft_charinstr(arr, *str)))
 			return (0);
+		str++;
 	}
 	return (1);
 }
@@ -54,13 +55,15 @@ void				points_filler(const char *str, t_map *map)
 		if (ft_charinstr((const char *)coordinates[j], ','))
 		{
 			zandcolour = ft_strsplit(coordinates[j], ',');
-			if (!(map->points[i].z = ft_atoi(zandcolour[0])))
-				print_error(ERR_READ_MAP);
-			if (!(map->points[i].colour = ft_atoi_hex(zandcolour[1])))
-				print_error(ERR_READ_MAP);
+			if (!(ns_checker(zandcolour[0], 10)) || !(ns_checker(zandcolour[1]+2, 16)))
+				print_error(ERR_HEX);
+			map->points[i].z = ft_atoi(zandcolour[0]);
+			map->points[i].colour = ft_atoi_hex(zandcolour[1]);
 		}
 		else
 		{
+			if (!(ns_checker(coordinates[j], 10)))
+				print_error(ERR_HEX);
 			map->points[i].z = ft_atoi(coordinates[j]);
 			map->points[i].colour = 0; //тест
 		}
