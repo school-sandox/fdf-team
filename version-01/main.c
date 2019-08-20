@@ -13,13 +13,19 @@ void		print_error(char *message)
 int			main(int argc, char **argv)
 {
 	t_map	*map;
-	int result;
+	t_fdf	*fdf;
 
 	if (argc == 2)
 	{
 		//валидция и инициализация карты
 		map = map_initialize(argv[1]);
 		read_map(argv[1], map);
+		fdf = fdf_initialize(map);
+		fdf->camera = camera_initialize(fdf);
+		print_map(map, fdf);
+
+
+		mlx_loop(fdf->mlx_ptr);
 	}
 	else
 		print_error(ERR_USAGE);
