@@ -82,7 +82,7 @@ static void			points_parser(t_map *map, char **coords)
 				print_error(ERR_HEX);
 		}
 		map->points[i].z = coord_zc ? ft_atoi(coord_zc[0]) : ft_atoi(*coords);
-		map->points[i].colour = coord_zc ? ft_atoi_hex(coord_zc[1]) : 0; //не ноль
+		map->points[i].colour = coord_zc ? ft_atoi_hex(coord_zc[1]) : 16777215; //не ноль
 		++coords;
 		++i;
 		free_coordinates(&coord_zc);

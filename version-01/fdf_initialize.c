@@ -15,5 +15,7 @@ t_fdf		*fdf_initialize(t_map *map)
 		print_error(ERR_FDF_INIT);
 	fdf->data_addr = mlx_get_data_addr(fdf->img_ptr, &(fdf->bits_per_pixel), &(fdf->size_line), &(fdf->endian));
 	fdf->map = map;
+	if (!(fdf->mouse = (t_mouse *)ft_memalloc(sizeof(t_mouse))))
+		print_error(ERR_FDF_INIT);
 	return (fdf);
 }

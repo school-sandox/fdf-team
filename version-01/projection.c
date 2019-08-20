@@ -30,10 +30,6 @@ static void	rotate_z(int *x, int *y, double gamma)
 	*y = previous_x * sin(gamma) + previous_y * cos(gamma);
 }
 
-/*
-** 2:1 isometric projection (26.57° angle = 0.46373398 rad)
-*/
-
 static void	iso(int *x, int *y, int z)
 {
 	int previous_x;

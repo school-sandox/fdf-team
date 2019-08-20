@@ -7,7 +7,7 @@ t_camera		*camera_initialize(t_fdf *fdf)
 
 	if (!(camera = (t_camera *)malloc(sizeof(t_camera))))
 		print_error(ERR_CAMERA_INIT);
-	camera->zoom = DEF_ZOOM(fdf);
+	camera->zoom = FT_MIN(ZOOM_WIDTH, ZOOM_HEIGHT);
 	camera->alpha = 0;
 	camera->beta = 0;
 	camera->gamma = 0;

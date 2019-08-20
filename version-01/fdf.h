@@ -4,16 +4,17 @@
 # define ZOOM_WIDTH			(WIDTH - MENU_WIDTH) / fdf->map->width / 2
 # define ZOOM_HEIGHT		HEIGHT / fdf->map->height / 2
 
-# define WRITE_STR(x, y, c, s)	(mlx_string_put(fdf->mlx, fdf->win, x, y, c, s))
-
+# define WRITE_STR(x, y, c, s)	(mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, x, y, c, s))
+# define TRUE				1
+# define FALSE				0
 # define FT_MIN(a, b)		(((a) < (b)) ? (a) : (b))
 # define FT_ABS(x) 			(((x) < 0) ? (-(x)) : (x))
 # define DEF_ZOOM(fdf)		FT_MIN(ZOOM_WIDTH, ZOOM_HEIGHT)
-# define MENU_WIDTH			250
+# define MENU_WIDTH			300
 # define WIDTH				1440
 # define HEIGHT				810
-# define BACKGROUND			0x282A36
-# define MENU_BACKGROUND	0x3C4556
+# define BACKGROUND			0xC0C0C0
+# define MENU_BACKGROUND	0xC0C0C0
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 # define ERR_USAGE   "Usage: ./fdf <name-file.fdf>"
@@ -35,6 +36,16 @@ typedef enum
 	CROSS,
 	ISO
 }	t_projection;
+
+typedef struct			s_mouse
+{
+	int					x;
+	int					y;
+	int					previous_x;
+	int					previous_y;
+	char				is_pressed;
+}						t_mouse;
+
 
 typedef struct			s_camera
 {
@@ -75,7 +86,7 @@ typedef struct			s_fdf
 	int					endian;
 	t_camera			*camera;
 	t_map				*map;
-	//t_mouse				*mouse;
+	t_mouse				*mouse;
 }						t_fdf;
 
 t_map					*map_initialize(const char *file);
@@ -86,8 +97,9 @@ void					free_coordinates(char ***coordinates);
 int						ft_atoi_hex(const char *str);
 t_fdf					*fdf_initialize(t_map *map);
 t_camera				*camera_initialize(t_fdf *fdf);
-t_point		projection(t_point point, t_fdf *fdf);
-void		print_map(t_map *map, t_fdf *fdf);
+t_point					projection(t_point point, t_fdf *fdf);
+void					print_map(t_map *map, t_fdf *fdf);
+void					set_default_colors(t_map *map);
 
 
 #endif

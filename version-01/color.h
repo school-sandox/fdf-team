@@ -13,13 +13,10 @@
 # define HIGH_COLOR			PINK1_COLOR
 # define LOW_COLOR			GREEN_COLOR
 
-# define BACKGROUND			0x282A36
-# define MENU_BACKGROUND	0x3C4556
-
 # define GET_RED(color)		((color >> 16) & 0xFF)
 # define GET_GREEN(color)	((color >> 8) & 0xFF)
 # define GET_BLUE(color)	(color & 0xFF)
-# define MERGE_RGB(r, g, b)	((r << 16) | (g << 8) | b)
+# define RGB(r, g, b)	    ((r << 16) | (g << 8) | b)
 
 # define NEW_LIGHT(a, b, per)	((int)((1 - per) * a + per * b))
 
