@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   setup_control.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 16:24:02 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/08/21 19:52:16 by ycorrupt         ###   ########.fr       */
+/*   Created: 2019/08/21 17:50:47 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/21 17:52:12 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-int		ft_isalpha(int c)
+void	setup_control(t_fdf *fdf)
 {
-	char z;
-
-	z = 64;
-	while (z++ < 90)
-		if ((c == z) || (c == (z + 32)))
-			return (1);
-	return (0);
+	mlx_hook(fdf->win_ptr, 2, 0, key_press, fdf);
+	mlx_hook(fdf->win_ptr, 17, 0, close_win, fdf);
+	mlx_hook(fdf->win_ptr, 4, 0, mouse_press, fdf);
+	mlx_hook(fdf->win_ptr, 5, 0, mouse_release, fdf);
+	mlx_hook(fdf->win_ptr, 6, 0, mouse_m, fdf);
 }

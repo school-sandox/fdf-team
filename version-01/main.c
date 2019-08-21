@@ -1,14 +1,16 @@
-#include <fcntl.h>
-#include "fdf.h"
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/21 19:10:08 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/21 19:10:15 by ycorrupt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void		print_error(char *message)
-{
-		ft_putendl_fd(message, 2);
-	    exit(1);
-}
+#include "fdf.h"
 
 int			main(int argc, char **argv)
 {
@@ -17,14 +19,11 @@ int			main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		//валидция и инициализация карты
 		map = map_initialize(argv[1]);
 		read_map(argv[1], map);
 		fdf = fdf_initialize(map);
 		fdf->camera = camera_initialize(fdf);
 		print_map(map, fdf);
-
-
 		mlx_loop(fdf->mlx_ptr);
 	}
 	else
