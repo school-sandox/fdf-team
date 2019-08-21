@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmacgyve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 16:45:01 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/08/17 16:45:04 by jmacgyve         ###   ########.fr       */
+/*   Created: 2019/08/21 14:02:21 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/21 14:07:55 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-char	*ft_strnew(size_t size)
+void		print_error(char *message)
 {
-	char *a;
-
-	if (!(a = (char*)ft_memalloc(size + 1)))
-		return (NULL);
-	return (a);
+	ft_putendl_fd(message, 2);
+	exit(1);
 }

@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmacgyve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 16:45:01 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/08/17 16:45:04 by jmacgyve         ###   ########.fr       */
+/*   Created: 2019/08/21 13:48:24 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/21 13:53:23 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strnew(size_t size)
+int		ft_count(char **arr)
 {
-	char *a;
+	int count;
 
-	if (!(a = (char*)ft_memalloc(size + 1)))
-		return (NULL);
-	return (a);
+	count = 0;
+	while (*arr)
+	{
+		++count;
+		++arr;
+	}
+	return (count);
 }

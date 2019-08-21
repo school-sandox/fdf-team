@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/21 11:26:00 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/21 14:20:20 by ycorrupt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef COLOR_H
 # define COLOR_H
 
@@ -19,8 +31,5 @@
 # define RGB(r, g, b)	    ((r << 16) | (g << 8) | b)
 
 # define NEW_LIGHT(a, b, per)	((int)((1 - per) * a + per * b))
-
-void	set_default_colors(t_map *map);
-int		get_color(t_point current, t_point a, t_point b, t_point delta);
 
 #endif

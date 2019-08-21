@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_chrnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmacgyve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 16:45:01 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/08/17 16:45:04 by jmacgyve         ###   ########.fr       */
+/*   Created: 2019/08/21 13:35:07 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/21 19:58:26 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strnew(size_t size)
+int		ft_chrnstr(const char *str, char c, int n)
 {
-	char *a;
+	int i;
 
-	if (!(a = (char*)ft_memalloc(size + 1)))
-		return (NULL);
-	return (a);
+	i = -1;
+	while (str[++i] != '\0' && i < n)
+		if (str[i] == c)
+			return (1);
+	return (0);
 }

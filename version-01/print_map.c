@@ -1,8 +1,18 @@
-#include "fdf.h"
-#include "color.h"
-#include <mlx.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/21 19:12:32 by ycorrupt          #+#    #+#             */
+/*   Updated: 2019/08/21 19:12:34 by ycorrupt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static void	plot(t_point point, int color, t_fdf *fdf)
+#include "fdf.h"
+
+static void			plot(t_point point, int color, t_fdf *fdf)
 {
 	int		i;
 
@@ -16,12 +26,12 @@ static void	plot(t_point point, int color, t_fdf *fdf)
 	}
 }
 
-static void	print_line(t_point a, t_point b, t_fdf *fdf)
+static void			print_line(t_point a, t_point b, t_fdf *fdf)
 {
-	t_point	delta;
-	t_point	sign;
-	int		error[2];
-	t_point	current;
+	t_point		delta;
+	t_point		sign;
+	int			error[2];
+	t_point		current;
 
 	delta.x = FT_ABS(b.x - a.x);
 	delta.y = FT_ABS(b.y - a.y);
@@ -45,7 +55,7 @@ static void	print_line(t_point a, t_point b, t_fdf *fdf)
 	}
 }
 
-void	setup_background(t_fdf *fdf)
+static void			setup_background(t_fdf *fdf)
 {
 	int	*image;
 	int	i;
@@ -60,10 +70,11 @@ void	setup_background(t_fdf *fdf)
 	}
 }
 
-void		print_map(t_map *map, t_fdf *fdf)
+void				print_map(t_map *map, t_fdf *fdf)
 {
-	int i = 0;
-	
+	int i;
+
+	i = 0;
 	setup_background(fdf);
 	while (i < map->size)
 	{
